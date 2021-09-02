@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,7 +53,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bookstore.urls'
+
+ROOT_URLCONF = 'demoproject.urls'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 TEMPLATES = [
     {
