@@ -47,6 +47,10 @@ from django.urls import path,include
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from book.views import *
+
+from django.views.static import serve
+from django.conf.urls import url
+from django.conf import settings
  
 urlpatterns =[
     path('admin/', admin.site.urls),
@@ -57,5 +61,7 @@ urlpatterns =[
     path('register/', registerPage,name='register'),
     path('logout/', logoutPage,name='logout'),
     path('addtocart/<str:pk>', addtocart,name='addtocart'),
-     path('delete/<int:id>',delete,name='name'),
+    path('delete/<int:id>',delete,name='name'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
